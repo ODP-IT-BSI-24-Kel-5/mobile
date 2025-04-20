@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, Platform } from 'react-native';
 
 // Berhubung kita belum mengimpor tema, kita akan mendefinisikan warna dan ukuran di sini
 const COLORS = {
@@ -39,20 +39,31 @@ const FormInput = ({
   isPassword = false,
   showPassword,
   setShowPassword,
+  isAmount = false,
+  textAlign = 'left',
 }) => {
+  // Debugging
+  console.log("Input value:", value);
+  
   return (
     <View style={styles.inputContainer}>
       {label && <Text style={styles.inputLabel}>{label}</Text>}
       <View style={styles.inputWrapper}>
+        {/* Input with fixed styling */}
         <TextInput
-          style={styles.input}
+          style={[
+            styles.input, 
+            { textAlign: isAmount ? 'right' : textAlign }
+          ]}
           placeholder={placeholder}
           value={value}
           onChangeText={onChangeText}
           secureTextEntry={isPassword && !showPassword}
-          keyboardType={keyboardType || 'default'}
+          keyboardType={isAmount ? 'number-pad' : (keyboardType || 'default')}
           autoCapitalize={autoCapitalize || 'sentences'}
         />
+        
+        {/* Icon on the right side */}
         {isPassword ? (
           <TouchableOpacity
             style={styles.inputIcon}
@@ -86,14 +97,25 @@ const styles = StyleSheet.create({
     borderColor: COLORS.border,
     borderRadius: SIZES.radius,
     alignItems: 'center',
+    minHeight: 50,
+    position: 'relative',
   },
   input: {
     flex: 1,
-    padding: 15,
+    paddingVertical: 15,
+    paddingLeft: 15,
+    paddingRight: 50, // Space for icon
     fontSize: SIZES.medium,
+    color: COLORS.text.primary,
+    height: 50,
   },
   inputIcon: {
-    padding: 15,
+    position: 'absolute',
+    right: 15,
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: 50,
+    width: 30,
   },
 });
 

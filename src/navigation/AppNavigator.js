@@ -13,6 +13,10 @@ import TransferSuccessScreen from '../screens/TransferSuccessScreen';
 import TopUpScreen from '../screens/TopUpScreen';
 import TopUpConfirmationScreen from '../screens/TopUpConfirmationScreen';
 import TopUpSuccessScreen from '../screens/TopUpSuccessScreen';
+import PayScreen from '../screens/PayScreen';
+import PayDetailScreen from '../screens/PayDetailScreen';
+import PayConfirmationScreen from '../screens/PayConfirmationScreen';
+import PaySuccessScreen from '../screens/PaySuccessScreen';
 
 const Stack = createStackNavigator();
 
@@ -39,7 +43,10 @@ const AppNavigator = () => {
         <Stack.Screen name="TopUp" component={TopUpScreen} />
         <Stack.Screen name="TopUpConfirmation" component={TopUpConfirmationScreen} />
         <Stack.Screen name="TopUpSuccess" component={TopUpSuccessScreen} />
-        {/* More screens will be added here */}
+        <Stack.Screen name="Pay" component={PayScreen} />
+        <Stack.Screen name="PayDetail" component={PayDetailScreen} />
+        <Stack.Screen name="PayConfirmation" component={PayConfirmationScreen} />
+        <Stack.Screen name="PaySuccess" component={PaySuccessScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

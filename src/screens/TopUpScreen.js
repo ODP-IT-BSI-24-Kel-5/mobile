@@ -12,6 +12,7 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context';
 import FormInput from '../components/FormInput';
 import Button from '../components/Button';
+import AmountInput from '../components/AmountInput';
 
 // Karena mungkin file tema belum dibuat
 const COLORS = {
@@ -173,16 +174,18 @@ const TopUpScreen = ({ navigation }) => {
               <View style={styles.inputContainer}>
                 <Text style={styles.currencySymbol}>Rp</Text>
                 <FormInput
-                  placeholder="0"
-                  value={customAmount}
-                  onChangeText={(text) => {
+                    placeholder="0"
+                    value={customAmount}
+                    onChangeText={(text) => {
                     // Filter hanya angka
                     const filteredText = text.replace(/[^0-9]/g, '');
                     setCustomAmount(filteredText);
                     setAmount(''); // Reset selected amount
-                  }}
-                  keyboardType="numeric"
-                  icon="💰"
+                    }}
+                    keyboardType="numeric"
+                    icon="💰"
+                    isAmount={true}
+                    textAlign="right"
                 />
               </View>
             </View>

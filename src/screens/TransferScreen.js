@@ -13,6 +13,7 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context';
 import FormInput from '../components/FormInput';
 import Button from '../components/Button';
+import AmountInput from '../components/AmountInput';
 import { COLORS, SIZES, FONTS } from '../constants/theme';
 
 // Data dummy untuk kontak/penerima
@@ -138,6 +139,8 @@ const TransferScreen = ({ navigation }) => {
                 }}
                 keyboardType="numeric"
                 icon="💰"
+                isAmount={true}
+                textAlign="right"
               />
             </View>
           </View>
